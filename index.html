@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="https://cdn.glitch.global/7d860ffc-9443-4aad-a023-b7424587d612/PrattleboardIcon.png?v=1738712736549" />
     <title>Prattleboard</title>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/script.js" defer></script>
   </head>
   <body>
-    <text>Type your answer</text><br>
-    <textarea id="inputfield"></textarea>
-    <br>
-    <input type="submit" id="submitted" value="Submit" onclick="getVal()">
+    <div id="submitting">
+          <text>Type your answer</text><br>
+          <textarea id="inputfield"></textarea>
+          <br>
+          <input type="submit" id="submitted" value="Submit" onclick="getVal()">
+    </div>
+    
+    <div id="done" style="display: none;">
+        <text style="color:white">Thank u for submitting :P</text><br>
+        <a href="/">Return</a>
+    </div>
+
   </body>
 </html>
 
-
 <script>
+  
+  document.getElementById("done").style.display = "none";
+  
   function getVal() {
     var text = document.getElementById("inputfield").value;
     console.log(text);
@@ -35,8 +43,65 @@
     }
 
     request.send(JSON.stringify(params));
-    window.location = "/finish.html"
+    
+    document.getElementById("submitting").style.display = "none";
+    document.getElementById("done").style.display = "inline";
 }
   
   
 </script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+  font-family: "Judson", serif;
+  text-align: center;
+  margin-top: 5em;
+  font-size: 30px;
+  background-color: black;
+  color: #737373;
+}
+
+
+textarea {
+  font-family: "Judson", serif;
+  margin: 1em;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  background-color: #292929;
+  color: white;
+  padding: 0.5em;
+  outline: 1px solid gray;
+  border-radius: 5px;
+}
+
+textarea:focus {
+  outline: 2px solid white;
+}
+
+input {
+  font-family: "Judson", serif;
+  font-size: 25px;
+  color: white;
+  border: none;
+  background-color: #5c5c5c;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+input:hover {
+  outline: 1px solid white;
+}
+
+input:active {
+  background-color: #3d3d3d;
+}
+
+a {
+  color: gray;
+}
+
+</style>
